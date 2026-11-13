@@ -1,0 +1,79 @@
+project_name: original100_prune47_confirmation
+normalized_data_path:
+- data/normalized/0.2C-R.csv
+- data/normalized/Dp-2.csv
+- data/normalized/Ds-2.csv
+- data/normalized/SL-R.csv
+feature_columns:
+- AD1/AG
+- AD2/AG
+- AD3/AG
+- AD4/AG
+- D Center
+- G Center
+- D/G
+target_columns: __last__
+output_dir: result/paper_results/pipeline_output
+log_dir: result/paper_results/logs
+feature_sets:
+- raw_feature_set
+cv_settings:
+  n_splits: 5
+  n_repeats: 20
+  random_seed: 2026
+  shuffle: true
+  include_group_cv: false
+classification_settings:
+  enabled: true
+  enabled_tasks:
+  - task_B_high_vs_low
+  primary_cv_type: repeated_stratified_kfold
+  one_standard_error: true
+  feature_sets:
+  - raw_feature_set
+  cv_settings:
+    n_splits: 5
+    n_repeats: 20
+    random_seed: 2026
+    shuffle: true
+    include_group_cv: false
+  task_b_high_quantile: 0.75
+  task_b_low_quantile: 0.25
+  enabled_models:
+  - LogisticRegression
+  - RidgeClassifier
+  - LinearSVC
+  - SVC_linear
+  - SVC_rbf
+  - KNeighborsClassifier
+  - GaussianProcessClassifier
+  - DecisionTreeClassifier
+  - RandomForestClassifier
+  - ExtraTreesClassifier
+  - GradientBoostingClassifier
+  - HistGradientBoostingClassifier
+  - AdaBoostClassifier
+  - BaggingClassifier
+  - XGBClassifier
+  - LGBMClassifier
+  - CatBoostClassifier
+  - MLPClassifier
+  allow_automl_models: false
+  n_jobs: -1
+  unified_candidate_models:
+  - CatBoostClassifier
+  - RandomForestClassifier
+  - ExtraTreesClassifier
+  - XGBClassifier
+  - LGBMClassifier
+  unified_preferred_feature_set: raw_feature_set
+  shap_enabled: true
+model_settings:
+  enabled_models: all
+  n_jobs: -1
+plotting_settings:
+  dpi: 600
+  formats:
+  - png
+  - pdf
+  - svg
