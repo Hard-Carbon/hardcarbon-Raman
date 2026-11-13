@@ -14,10 +14,7 @@ python -m pip install -r requirements.txt
 
 | Path | Contents |
 | --- | --- |
-| `data/rate.csv` | Processed input for `0.2C-R` |
-| `data/Dp.csv` | Processed input for `Dp-2` |
-| `data/Ds.csv` | Processed input for `Ds-2` |
-| `data/SL.csv` | Processed input for `SL-R` |
+| `data/` | Input data |
 | `classification.py` | Classification entry point |
 | `config.yaml` | Workflow settings |
 | `src/` | Data loading, models, and visualization |
@@ -29,7 +26,7 @@ The four CSV files contain seven Raman descriptors and one electrochemical targe
 
 ## Usage
 
-Set `normalized_data_path` in `config.yaml` to the four CSV paths shown above, then run the classification script from the repository root.
+Set `normalized_data_path` in `config.yaml` to the CSV paths under `data/`, then run the classification script from the repository root.
 
 ```bash
 python classification.py --config config.yaml
